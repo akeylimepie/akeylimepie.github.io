@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="x-rim-auto-match" content="none">
+</head>
+<body>
+    <style type="text/css">
+        body { font-family: Arial; text-align: center; }
+        section { display: flex; width: 100%; height: 100vh; justify-content: center; align-items: center;}
+        a {
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 100%;
+            color: #FFF;
+            background: #5dc390;
+            border-radius: 22px;
+            overflow: hidden;
+            display: inline-block;
+            padding: 15px 27px 13px;
+            text-transform: uppercase;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+        a:hover {
+            background: #4bbc87;
+        }
+        p { 
+            color: #cacaca;
+        }
+    </style>
+
+    <section>
+        <div>
+            <div id="tgme_frame_cont"></div>
+            <a href="" id="link">te</a>
+            <p id="description">te</p>
+        </div>
+    </section>
+
+    <script>
+        var options = window.location.search.slice(1)
+                      .split('&')
+                      .reduce(function (list, param) {
+                        param = param.split('=');
+                        list[param[0]] = decodeURIComponent(param[1]);
+                        return list;
+                      }, {});
+        
+        if(options['server']){
+            var protoUrl = "tg:\/\/proxy?server=" + options['server'] +
+                            "&port=" + options['port'] +
+                            "&secret=" + options['secret'];
+
+            var link = document.getElementById('link');
+            link.innerHTML = 'Подключить';
+            link.href = protoUrl;
+
+            var description = document.getElementById('description');
+            description.innerHTML = options['server'] + ":" + options['port'] + "<br/>" + options['secret'];
+
+            setTimeout(function() {
+                window.location = protoUrl;
+            }, 100);
+        }
+
+
+    </script>
+</body>
+</html>
