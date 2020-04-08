@@ -34,38 +34,9 @@
     <section>
         <div>
             <div id="tgme_frame_cont"></div>
-            <a href="" id="link"></a>
+            <a href="karabiner://karabiner/assets/complex_modifications/import?url=https://raw.githubusercontent.com/akeylimepie/karabiner/master/birmanSwitch.json" id="link">karabiner cm</a>
             <p id="description"></p>
         </div>
     </section>
-
-    <script>
-        var options = window.location.search.slice(1)
-                      .split('&')
-                      .reduce(function (list, param) {
-                        param = param.split('=');
-                        list[param[0]] = decodeURIComponent(param[1]);
-                        return list;
-                      }, {});
-        
-        if(options['server']){
-            var protoUrl = "tg:\/\/proxy?server=" + options['server'] +
-                            "&port=" + options['port'] +
-                            "&secret=" + options['secret'];
-
-            var link = document.getElementById('link');
-            link.innerHTML = 'Подключить';
-            link.href = protoUrl;
-
-            var description = document.getElementById('description');
-            description.innerHTML = options['server'] + ":" + options['port'] + "<br/>" + options['secret'];
-
-            setTimeout(function() {
-                window.location = protoUrl;
-            }, 100);
-        }
-
-
-    </script>
 </body>
 </html>
